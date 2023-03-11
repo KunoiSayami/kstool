@@ -1,5 +1,5 @@
 pub mod prelude {
-    pub use super::time::get_current_timestamp;
+    pub use super::time::{get_current_timestamp, get_current_duration};
 }
 
 pub mod time {
