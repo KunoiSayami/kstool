@@ -1,0 +1,9 @@
+[package]
+name = "kstool"
+version = "0.1.0"
+authors = ["KunoiSayami <i@leanhe.dev>"]
+edition = "2021"
+description = "A tools crate used by KunoiSayami's projects"
+license = "AGPL-3.0-or-later"
+
+[dependencies]
