@@ -3,12 +3,18 @@ pub mod prelude {
 }
 
 pub mod time {
+    use std::time::Duration;
+
     pub fn get_current_timestamp() -> u128 {
+        get_current_duration().as_millis()
+    }
+    pub fn get_current_duration() -> Duration {
+
         let start = std::time::SystemTime::now();
-        let since_the_epoch = start
+        start
             .duration_since(std::time::UNIX_EPOCH)
-            .expect("Time went backwards");
-        since_the_epoch.as_millis()
+            .expect("Time went backwards")
+
     }
 }
 
