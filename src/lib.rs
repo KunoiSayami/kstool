@@ -27,7 +27,7 @@ pub mod time {
 pub mod sqlx {
     use sqlx::SqliteConnection;
 
-    async fn update_database_version(conn: &mut SqliteConnection, table_name: &'static str, version: &'static str) -> Result<(), sqlx::Error> {
+    pub async fn update_database_version(conn: &mut SqliteConnection, table_name: &'static str, version: &'static str) -> Result<(), sqlx::Error> {
         sqlx::query(&format!(r#"UPDATE "{}" SET "value" = ? WHERE "key" = 'version'"#, table_name))
             .bind(version)
             .execute(conn)
@@ -35,7 +35,7 @@ pub mod sqlx {
             .map(|_| ())
     }
 
-    async fn insert_database_version(conn: &mut SqliteConnection, table_name: &'static str, version: &'static str) -> Result<(), sqlx::Error> {
+    pub async fn insert_database_version(conn: &mut SqliteConnection, table_name: &'static str, version: &'static str) -> Result<(), sqlx::Error> {
         sqlx::query(&format!(r#"INSERT INTO "{}" VALUES ("version", ?)"#, table_name))
             .bind(version)
             .execute(conn)
@@ -43,7 +43,7 @@ pub mod sqlx {
             .map(|_| ())
     }
 
-    async fn check_database(conn: &mut SqliteConnection, table_name: &'static str) -> Result<bool, sqlx::Error> {
+    pub async fn check_database(conn: &mut SqliteConnection, table_name: &'static str) -> Result<bool, sqlx::Error> {
         sqlx::query_as(
             r#"SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "name" = 'meta';"#,
         )
