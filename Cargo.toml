@@ -1,10 +1,17 @@
 [package]
 name = "kstool"
-version = "0.2.1"
+version = "0.3.0"
 authors = ["KunoiSayami <i@leanhe.dev>"]
 edition = "2021"
 description = "A tools crate used by KunoiSayami's projects"
 license = "AGPL-3.0-or-later"
 
 [dependencies]
-sqlx = { version = "0.7.0-alpha.3", features = ["sqlite"], optional = true }
+sqlx = { version = "0.8.0", features = ["sqlite"], optional = true }
+
+jiff = { version = "0.2", default-features = false, features = [
+    "std",
+], optional = true }
+
+[features]
+jiff-tz = ["jiff", "jiff/tzdb-bundle-platform", "jiff/tz-system"]
