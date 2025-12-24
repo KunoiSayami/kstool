@@ -1,5 +1,5 @@
 #[cfg(feature = "jiff")]
-pub mod jiff;
+pub mod jiff_impl;
 
 pub mod prelude {
     pub use super::time::{get_current_duration, get_current_timestamp};
@@ -22,8 +22,9 @@ pub mod time {
             .duration_since(std::time::UNIX_EPOCH)
             .expect("Time went backwards")
     }
+
     #[cfg(feature = "jiff")]
-    pub use jiff::*;
+    pub use super::jiff_impl::*;
 }
 
 #[cfg(feature = "sqlx")]
