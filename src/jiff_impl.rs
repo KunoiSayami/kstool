@@ -18,3 +18,7 @@ pub fn current_time_string() -> String {
 pub fn zone_fmt(zone: jiff::Zoned, fmt: &str) -> String {
     zone.strftime(fmt).to_string()
 }
+
+pub fn current_time_fmt(fmt: &str) -> String {
+    zone_fmt(jiff::Zoned::now(), fmt)
+}
