@@ -1,6 +1,6 @@
 [package]
 name = "kstool"
-version = "0.3.2"
+version = "0.3.3"
 authors = ["KunoiSayami <i@leanhe.dev>"]
 edition = "2021"
 description = "A tools crate used by KunoiSayami's projects"
@@ -15,3 +15,4 @@ jiff = { version = "0.2", default-features = false, features = [
 
 [features]
 jiff-tz = ["jiff", "jiff/tzdb-bundle-platform", "jiff/tz-system"]
+jiff-export = ["jiff"]

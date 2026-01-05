@@ -1,6 +1,9 @@
 #[cfg(feature = "jiff")]
 pub mod jiff_impl;
 
+#[cfg(feature = "jiff-export")]
+pub use jiff;
+
 pub mod prelude {
     pub use super::time::{get_current_duration, get_current_timestamp};
 }
