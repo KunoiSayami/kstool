@@ -22,3 +22,20 @@ pub fn zone_fmt(zone: jiff::Zoned, fmt: &str) -> String {
 pub fn current_time_fmt(fmt: &str) -> String {
     zone_fmt(jiff::Zoned::now(), fmt)
 }
+
+#[cfg(test)]
+mod test {
+    #[cfg(feature = "jiff-tz-full")]
+    #[test]
+    fn test_jiff_tz_parse() {
+        use jiff::{civil::DateTime, Timestamp};
+
+        let t: DateTime = "2026-01-02 21:09:47".parse().unwrap();
+
+        t.in_tz("UTC").unwrap();
+
+        let t: Timestamp = "2021-04-22T00:12:18Z".parse().unwrap();
+
+        t.in_tz("Asia/Taipei").unwrap();
+    }
+}

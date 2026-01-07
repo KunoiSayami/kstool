@@ -83,7 +83,7 @@ mod tests {
     use super::prelude::*;
 
     #[test]
-    fn it_works() {
+    fn test_get_current_timestamp() {
         get_current_timestamp();
     }
 }
